@@ -52,13 +52,13 @@ $ docker run -d --name confluence \
 
 5.按照步骤进行安装，在数据库选择中选择  
 
-   1.生产（production)
+   - 1.生产（production)
    
-   2.选获取测试验证码（跳到jira注册一个帐号，然后自动会填写进去）
+   - 2.选获取测试验证码（跳到jira注册一个帐号，然后自动会填写进去）
    
-   3.JDBC模式与数据库链接
+   - 3.JDBC模式与数据库链接
    
-   4.按照如下填写表格
+   - 4.按照如下填写表格
    
 ```
 Driver Class Name: org.postgresql.Driver
