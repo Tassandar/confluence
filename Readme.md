@@ -1,3 +1,70 @@
+这是一个confluence 6.3.4版本的破解版，已经完成了docker化
+
+源地址
+
+https://github.com/ealebed/confluence
+
+作者是一个俄罗斯小哥
+
+https://ealebed.github.io/
+
+
+想要运行confluence 6.3.4版本的破解版
+你需要做的是
+
+1.安装并运行docker环境，例如 
+
+```
+   sudo yum install docker-io 
+   
+   sudo  service start docker
+```
+
+然后
+
+2. 运行你的数据库环境，(记得改密码)
+
+```
+$ docker network create confluencenet
+$ docker run --name postgres -d \
+    --network confluencenet \
+    -e 'POSTGRES_USER=confluencedb' \
+    -e 'POSTGRES_PASSWORD=password' \
+    -e 'POSTGRES_ENCODING=UTF8' \
+    -e 'POSTGRES_COLLATE=C' \
+    -e 'POSTGRES_COLLATE_TYPE=C' \
+    -e 'POSTGRES_DB=confluencedb' \
+    blacklabelops/postgres
+```
+
+3. 运行本破解版confluence
+
+```
+$ docker run -d --name confluence \
+	  --network confluencenet \
+	  -p 80:8090  ealebed/confluence
+```
+
+4. 打开浏览器，输入对应地址   http://confluence.example.com/
+
+5.按照步骤进行安装，在数据库选择中选择  
+
+   1.生产（production)
+   2.选获取测试验证码（跳到jira注册一个帐号，然后自动会填写进去）
+   3.JDBC模式与数据库链接
+   4.填写 表格
+   
+```
+Driver Class Name: org.postgresql.Driver
+Database URL: jdbc:postgresql://postgres:5432/confluencedb
+User Name: confluencedb
+Password: password
+``` 
+
+6.done
+
+_______________________________________________________________
+
 Для "лицензирования" Confluence 6.3.4 необходимо внести изменения в два файла (приведены актуальные версии файлов на момент установки):
    
 ```
